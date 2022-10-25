@@ -1,0 +1,34 @@
+Axios
+
+import axios form "axios";
+
+const axiosIns = axios.create({
+  baseURL: "디폴트값으로 사용할 URL주소",
+  // 각종 디폴트값 설정 가능,
+})
+
+나머지 페치와 동일,
+
+//요청(response) interceptor
+axios.interceptors.request.use(
+  function (config) {
+    // 요청을 보내기 전 수행할 작업
+    return config;
+  },
+  function (error) {
+    // 오류 요청 가공
+    return Promise.reject(error);
+  }
+);
+
+// 응답(response) interceptor
+axios.interceptors.response.use(
+  function (response) {
+    // 200대 response를 받아 응답 데이터를 가공하는 작업
+    return response;
+  },
+  function (error) {
+    // 200대 이외의 오류 응답을 가공
+    return Promise.reject(error);
+  }
+);
